@@ -1,15 +1,12 @@
-version: '2'
-
+version: '3'
 services:
   squid:
     build: .
-    image: jonanh/docker-caching-proxy
-    command: squid3 -z
-    command: squid3 -NYCd 1
+    image: jonanh/docker-apt-cache
     ports:
-    - "3128:3128"
+      - "3128:3128"
     volumes:
-    - ./squid.conf:/etc/squid/squid.conf
-    - ./data:/var/spool/squid3
+      - ./squid.conf:/etc/squid/squid.conf:z
+      - ./data:/var/spool/squid:z
     restart: always
 
